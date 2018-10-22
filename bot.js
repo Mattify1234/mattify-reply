@@ -289,8 +289,8 @@ bot.on("message", function (message){
 				embed.addField("Commands","Ping => Usage: ?ping \n Info => Usage: ?info.\n Updates => Usage: ?updates.");
 				embed.addField("Role Management", "Add Role => Usage:-\n?addrole @member role \n\n Remove Role => Usage:-\n?remrole @member role\n\n Set Joining Role => Usage:-\n?defrole [rolename].\n\n");
 				embed.addField("Moderation","Kick => Usage: -\n?kick @member [reason]\n\nBan => Usage: -\n?ban @member [reason]\n\nMute => Usage: -\n?mute @member [time] [reason]\n\nUnmute => Usage: -\n?unmute @member [reason].\n\n");
-				embed.addField("Others","Usage: -\n?profile @Member\n\nSite => Usage: -/n?site/n/n?invite => Usage: -/n?invite");
-			        embed.addField("Fun!","8Ball => Usage: ?8ball (question) \n RPS => Usage: ?rps (rock, Paper, Scissors).\n");
+				embed.addField("Others","profile => Usage: -\n?profile @member\n\nsite => Usage: -\n?site [Brings you to the bot's website!]\n\ninvite => Usage: -\n?invite [Sends the link to invite the bot to your server!]\n\n");
+			        embed.addField("Fun!","8Ball => Usage: ?8ball (question) \n RPS => Usage: ?rps (rock, Paper, Scissors) \n Say => Usage: ?say (message) /n");
 				message.channel.send("I sent help in your dms! :D")
 				message.author.send(embed);
 				args[0] = null;
