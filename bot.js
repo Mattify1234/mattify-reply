@@ -543,7 +543,7 @@ bot.on("message", function (message){
                         console.log(e.stack);
                       }
                   }
-                  mem.send("You have been muted by " + message.member.user.username + " because of " + reas + "for" + muttime);
+                  mem.send(`You have been muted by ${message.member.user.username} for ${ms(ms(mutetime))}: ${reas});
                   message.channel.send("***User: " + mem.user.username + " has been muted!***");
                   message.delete();
                   mem.addRole(mut.id);
@@ -551,7 +551,7 @@ bot.on("message", function (message){
                   setTimeout(function(){
                     mem.removeRole(mut.id);
                     message.guild.member(mem).send("You have been unmuted.");
-                }, ms(muttime));
+                  }, ms(muttime));
 
               }
             }
