@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const fs = require("fs");
+const ms = require("ms");
 let cooldowns = JSON.parse(fs.readFileSync('cooldown.json','utf-8'));
 let cdlimit = 5000;
 //const ytdl = require("ytdl-core");
