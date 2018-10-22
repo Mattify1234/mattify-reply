@@ -21,7 +21,7 @@ var defrole ="Members";
 var mod;
 args = null;
 
-var bot = new Discord.Client();
+var bot = new Discord.Client({disableEveryone: true});
 
 var queue = [];
 var isPlaying = false;
