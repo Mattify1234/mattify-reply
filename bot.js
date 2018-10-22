@@ -543,7 +543,7 @@ bot.on("message", function (message){
                         console.log(e.stack);
                       }
                   }
-                  mem.send(`You have been muted by ${message.member.user.username} for ${ms(ms(mutetime))}: ${reas});
+                  mem.send(`You have been muted by ${message.member.user.username} for ${ms(ms(mutetime))}: ${reas}`);
                   message.channel.send("***User: " + mem.user.username + " has been muted!***");
                   message.delete();
                   mem.addRole(mut.id);
