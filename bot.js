@@ -5,7 +5,6 @@ let cooldowns = JSON.parse(fs.readFileSync('cooldown.json','utf-8'));
 let cdlimit = 5000;
 const ytdl = require("ytdl-core");
 const request = require("request");
-const fs = require("fs");
 const getytid = require("get-youtube-id");
 const fvi = require("youtube-info");
 
