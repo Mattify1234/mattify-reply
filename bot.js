@@ -3,13 +3,14 @@ const fs = require("fs");
 const ms = require("ms");
 let cooldowns = JSON.parse(fs.readFileSync('cooldown.json','utf-8'));
 let cdlimit = 5000;
-const ytdl = require("ytdl-core");
-const request = require("request");
-const getytid = require("get-youtube-id");
-const fvi = require("youtube-info");
+//const ytdl = require("ytdl-core");
+//const request = require("request");
+//const fs = require("fs");
+//const getytid = require("get-youtube-id");
+//const fvi = require("youtube-info");
 
-var config = JSON.parse(fs.readFileSync("./settings.json", "utf-8"));
-const apikey = config.yt_api_key;
+//var config = JSON.parse(fs.readFileSync("./settings.json", "utf-8"));
+//const apikey = config.yt_api_key;
 
 const prefix = "?";
 
@@ -655,7 +656,7 @@ bot.on("message", function (message){
 		  		message.channel.send(embed);
 				break;
 		
-		case "play":
+		/*case "play":
 		  if(args[1] == null)
 		  {message.channel.send("Hmmmm... What should I play???");}
 		  else
@@ -672,7 +673,7 @@ bot.on("message", function (message){
 		  	 	}
 		  	 sname="";
 		  	}
-		break;
+		break;*/
 		
 			default:
 				message.channel.send("");
@@ -683,10 +684,9 @@ bot.on("message", function (message){
 			
 	}
 });
-
+/*
 function isYt(str)
 {return str.toLowerCase().indexOf("youtube.com") > -1;}
-
 function searchvid(query, callback)
 {
 	request("https://www.googleapis.com/youtube/v3/search?part=id&type=video&q=" + encodeURIComponent(query) + "&key=" + apikey , function(error, response, body){
@@ -694,7 +694,6 @@ function searchvid(query, callback)
 		callback(json.items[0].id.videoId);
 		});
 }
-
 function getID(str, cb){
 	if(isYt(str)){
 		cb(getytid(str));
@@ -705,7 +704,6 @@ function getID(str, cb){
 		});
 	}
 }
-
 function add(strId)
 {
 	if(isYt(strId)){
@@ -715,6 +713,6 @@ function add(strId)
 	{
 		 queue.push(strId);
 	}
-}
+}*/
 
 bot.login(process.env.BOT_TOKEN);
