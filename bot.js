@@ -283,7 +283,7 @@ bot.on("message", function (message){
 				
 			case "help":
 				var embed = new Discord.RichEmbed();
-				embed.setColor("RED");
+				embed.setColor("RANDOM");
 				embed.addField("Prefix", "'?'\n\n");
 				embed.setFooter("Full Of Fun! More Updates Coming Soon!");
 				embed.addField("Commands","Ping => Usage: ?ping \n Info => Usage: ?info.\n Updates => Usage: ?updates.");
