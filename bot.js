@@ -517,7 +517,6 @@ bot.on("message", function (message){
             break;
             
             case "mute":
-                    async (bot, message, args) => {
                         if(message.member.permissions.has("MUTE_MEMBERS")){
                             if(args[1] == null){
                                 message.channel.send("The correct syntax is ?mute @member [length] [reason].");
@@ -559,7 +558,7 @@ bot.on("message", function (message){
                                 }, ms(muttime));
                             }
                             }
-                        };
+                        
             break;
 
 
