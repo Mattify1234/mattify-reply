@@ -517,7 +517,8 @@ bot.on("message", function (message){
 			break;
 
 			case "mute":
-            if(message.member.permissions.has("MUTE_MEMBERS")){
+				async (bot, message, args) => {
+           if(message.member.permissions.has("MUTE_MEMBERS")){
               if(args[1] == null){
               message.channel.send("The correct syntax is ?mute @member [length] [reason]."); 
               return;
@@ -528,13 +529,13 @@ bot.on("message", function (message){
                   let muttime = args[1];
                   if(!mut){
                     try{
-                        mut =  message.guild.createRole({
+                        mut = await message.guild.createRole({
                           name: "Muted",
                           color: "#000000",
                           permissions: []
                         })
                         message.guild.channels.forEach(async (channel, id) => {
-                           channel.overwritePermissions(mut, {
+                           await channel.overwritePermissions(mut, {
                               SEND_MESSAGES: false,
                               ADD_REACTIONS: false
                           });
@@ -555,7 +556,9 @@ bot.on("message", function (message){
 
               }
             }
-            break;
+				}
+
+                             break;
 
 			case "unmute":
         			if(message.member.permissions.has("MUTE_MEMBERS")){
