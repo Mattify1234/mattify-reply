@@ -528,7 +528,7 @@ bot.on("message", function (message){
                                 let muttime = args[1];
                                 if(!mut){
                                     try{
-                                        mut = await message.guild.createRole({
+                                        mut = message.guild.createRole({
                                             name: "Muted",
                                             color: "#000000",
                                             permissions: []
