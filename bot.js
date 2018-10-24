@@ -514,51 +514,54 @@ bot.on("message", function (message){
         			}
         		}
         
-			break;
+            break;
+            
+            case "mute":
+                    async (bot, message, args) => {
+                        if(message.member.permissions.has("MUTE_MEMBERS")){
+                            if(args[1] == null){
+                                message.channel.send("The correct syntax is ?mute @member [length] [reason].");
+                                return;
+                            }else{
+                                let mut = message.guild.roles.find("name", `Muted`);
+                                let mem = message.mentions.members.first();
+                                let reas = args.join(" ").slice(22);
+                                let muttime = args[1];
+                                if(!mut){
+                                    try{
+                                        mut = await message.guild.createRole({
+                                            name: "Muted",
+                                            color: "#000000",
+                                            permissions: []
+                                        })
+                                        message.guild.channels.forEach(async (channel, id => {
+                                            await channel.overwritePermissions(mut, {
+                                                SEND_MESSAGES: false,
+                                                ADD_REACTIONS: false
+                                            });
+                                        }));
+                                        mem.send(`You have been muted by ${message.member.user.username} for ${ms(ms(muttime))}: ${reas}`);
+                                        message.channel.send("***User: " + mem.user.username + " has been muted!***");
+                                        message.delete();
+                                        mem.addRole(mut.id);
+                                    }catch(e){
+                                        console.log(e.stack);
+                                    }
+                                }
+                                mem.send(`You have been muted by ${message.member.user.username} for ${ms(ms(muttime))}: ${reas}`);
+                                message.channel.send("***User: " + mem.user.username + " has been muted!***");
+                                message.delete();
+                                mem.addRole(mut.id);
 
-		case "mute":
-		async (bot, message, args) => {
-                  if(message.member.permissions.has("MUTE_MEMBERS")){
-                  if(args[1] == null){
-                   message.channel.send("The correct syntax is ?mute @member [length] [reason]."); 
-                  return;
-            }else{
-                  let mut = message.guild.roles.find("name","Muted");
-                  let mem = message.mentions.members.first();
-                  let reas = args.join(" ").slice(22);
-                  let muttime = args[1];
-                  if(!mut){
-                    try{
-                        mut = await message.guild.createRole({
-                          name: "Muted",
-                          color: "#000000",
-                          permissions: []
-                        })
-                        message.guild.channels.forEach(async (channel, id) => {
-                           await channel.overwritePermissions(mut, {
-                              SEND_MESSAGES: false,
-                              ADD_REACTIONS: false
-                          });
-                      });
-                    }catch(e){
-                        console.log(e.stack);
-                      }
-                  }
-                  mem.send(`You have been muted by ${message.member.user.username} for ${ms(ms(muttime))}: ${reas}`);
-                  message.channel.send("***User: " + mem.user.username + " has been muted!***");
-                  message.delete();
-                  mem.addRole(mut.id);
+                                setTimeout(function(){
+                                    mem.removeRole(mut.id);
+                                    message.guild.member(mem).send("You have been unmuted.");
+                                }, ms(muttime));
+                            }
+                            }
+                        };
+            break;
 
-                  setTimeout(function(){
-                    mem.removeRole(mut.id);
-                    message.guild.member(mem).send("You have been unmuted.");
-                  }, ms(muttime));
-
-              }
-            }
-				}
-
-                                break;
 
 			case "unmute":
         			if(message.member.permissions.has("MUTE_MEMBERS")){
