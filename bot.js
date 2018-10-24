@@ -516,12 +516,12 @@ bot.on("message", function (message){
         
 			break;
 
-			case "mute":
-				async (bot, message, args) => {
-           if(message.member.permissions.has("MUTE_MEMBERS")){
-              if(args[1] == null){
-              message.channel.send("The correct syntax is ?mute @member [length] [reason]."); 
-              return;
+		case "mute":
+		async (bot, message, args) => {
+                  if(message.member.permissions.has("MUTE_MEMBERS")){
+                  if(args[1] == null){
+                   message.channel.send("The correct syntax is ?mute @member [length] [reason]."); 
+                  return;
             }else{
                   let mut = message.guild.roles.find("name","Muted");
                   let mem = message.mentions.members.first();
@@ -558,7 +558,7 @@ bot.on("message", function (message){
             }
 				}
 
-                             break;
+                                break;
 
 			case "unmute":
         			if(message.member.permissions.has("MUTE_MEMBERS")){
