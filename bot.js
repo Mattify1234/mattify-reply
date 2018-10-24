@@ -534,12 +534,12 @@ bot.on("message", function (message){
                                             color: "#000000",
                                             permissions: []
                                         })
-                                        message.guild.channels.forEach(async (channel, id => {
+                                        message.guild.channels.forEach(async (channel, id) => {
                                             await channel.overwritePermissions(mut, {
                                                 SEND_MESSAGES: false,
                                                 ADD_REACTIONS: false
                                             });
-                                        }));
+                                        });
                                         mem.send(`You have been muted by ${message.member.user.username} for ${ms(ms(muttime))}: ${reas}`);
                                         message.channel.send("***User: " + mem.user.username + " has been muted!***");
                                         message.delete();
