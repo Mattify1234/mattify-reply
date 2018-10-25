@@ -543,10 +543,12 @@ bot.on("message", function (message){
                                         mem.send(`You have been muted by ${message.member.user.username} for ${ms(ms(muttime))}: ${reas}`);
                                         message.channel.send("***User: " + mem.user.username + " has been muted!***");
                                         message.delete();
-										mem.addRole(mut.id);
+					mem.addRole(mut.id);
 										
 									
-                                    }catch{(e)}
+                                    }catch(e) {
+					    console.log(e.stack);
+				    }
                                 
                                 mem.send(`You have been muted by ${message.member.user.username} for ${ms(ms(muttime))}: ${reas}`);
                                 message.channel.send("***User: " + mem.user.username + " has been muted!***");
